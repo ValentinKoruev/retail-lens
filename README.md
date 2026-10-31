@@ -89,3 +89,7 @@ main.py [--rows N] [--skip-generate]
   --rows N          number of transactions to generate (default 500000)
   --skip-generate   reuse an existing data/sales.csv
 ```
+
+---
+
+*Developed and tested on Linux 7.1.5-arch1-2 (x86_64) with Python 3.14.6 and OpenJDK 26.*
