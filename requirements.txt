@@ -1,0 +1,9 @@
+pyspark==4.3.0
+ray==2.59.0
+dask[complete]==2026.8.0
+faker==40.44.0
+pandas<3.0
+pyarrow>=20.0.0
+matplotlib>=3.9
+seaborn>=0.13
+jinja2>=3.1
