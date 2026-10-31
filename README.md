@@ -15,16 +15,21 @@ HTML report.
 
 ```bash
 python3 -m venv .venv
-.venv/bin/pip install -r requirements.txt
+source .venv/bin/activate       # Windows: .venv\Scripts\activate
+pip install -r requirements.txt
 ```
 
 ## Run
 
+With the virtualenv active:
+
 ```bash
-.venv/bin/python main.py                   # default: 500,000 rows
-.venv/bin/python main.py --rows 1000000    # bigger dataset
-.venv/bin/python main.py --skip-generate   # reuse existing data/sales.csv
+python main.py                   # default: 500,000 rows
+python main.py --rows 1000000    # bigger dataset
+python main.py --skip-generate   # reuse existing data/sales.csv
 ```
+
+When you're done, `deactivate` leaves the virtualenv.
 
 The run takes ~40–50 s for 500k rows on a modern laptop.
 

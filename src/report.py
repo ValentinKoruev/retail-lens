@@ -1,10 +1,18 @@
 """Render the HTML report and print the console summary."""
 
 import base64
+import platform
 from datetime import datetime
 from pathlib import Path
 
 from jinja2 import Template
+
+
+def _system_info() -> str:
+    return (
+        f"{platform.system()} {platform.release()} ({platform.machine()}) · "
+        f"Python {platform.python_version()}"
+    )
 
 TEMPLATE = Template(r"""<!DOCTYPE html>
 <html lang="en">
@@ -299,6 +307,10 @@ TEMPLATE = Template(r"""<!DOCTYPE html>
     </ul>
   </div>
 
+  <footer>
+    Tested on {{ system_info }}
+  </footer>
+
 </div>
 </body>
 </html>
@@ -398,6 +410,7 @@ def build_report(
     html = TEMPLATE.render(
         generated_at=datetime.now().strftime("%Y-%m-%d %H:%M:%S"),
         period_label=_period_label(spark_results.get("monthly")),
+        system_info=_system_info(),
         timings=timings,
         counts=counts,
         overall=spark_results["overall"],
